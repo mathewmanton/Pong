@@ -1,7 +1,7 @@
 
 push = require 'push'
 Class = require 'class'
-require 'Ball'
+require 'Ball
 require 'Paddle'
 
 WINDOW_WIDTH = 1280

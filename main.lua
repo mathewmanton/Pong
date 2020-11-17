@@ -12,7 +12,6 @@ VIRTUAL_HEIGHT = 243
 
 PADDLE_SPEED = 200
 
-
 --Runs only once at the beginning of the game
 function love.load()
   love.graphics.setDefaultFilter('nearest', 'nearest')

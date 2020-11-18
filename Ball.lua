@@ -18,6 +18,18 @@ function Ball:update(dt)
     self.y = self.y + self.dy * dt
 end
 
+function Ball:collides(paddle)
+  if self.x > paddle.x + paddle.width or paddle.x > self.x + self.width then
+    return false
+  end
+    
+  if self.y > paddle.y + paddle.height or paddle.y > self.y + self.height then
+    return false
+  end
+    
+  return true
+end
+
 --place ball back in the middle and give it a new random direction
 function Ball:reset()
   self.x = VIRTUAL_WIDTH / 2 - 2

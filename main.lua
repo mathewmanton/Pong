@@ -32,6 +32,8 @@ function love.load()
   player1Score = 0
   player2Score = 0
   
+  servingPlayer = 1
+  
   player1 = Paddle(10, 30, 5, 20)
   player2 = Paddle(VIRTUAL_WIDTH - 10, VIRTUAL_HEIGHT - 30, 5, 20)
   
@@ -127,9 +129,9 @@ function love.keypressed(key)
     love.event.quit()
   elseif key == 'enter' or key == 'return' then
     if gameState == 'start' then
+      gameState = 'serve'
+    elseif gameState == 'serve' then
       gameState = 'play'
-    else 
-      ball:reset()
     end
   end
 end

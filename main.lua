@@ -63,7 +63,15 @@ function love.update(dt)
     player1:update(dt)
     player2:update(dt)
     
-    if gameState == 'play' then
+    
+    if gameState == 'serve' then
+      ball.dy = math.random(-50, 50)
+      if servingPlayer == 1 then
+        ball.dx = math.random(140, 200)
+      else
+        ball.dx = -math.random(140, 200)
+      end          
+    elseif gameState == 'play' then
       
       --collision between ball and player1
       if ball:collides(player1) then
@@ -99,12 +107,16 @@ function love.update(dt)
       end
       
       if ball.x < 0 then
+        servingPlayer = 1
         player2Score = player2Score + 1
         ball:reset()
+        gameState = 'serve'
       end
       if ball.x > VIRTUAL_WIDTH then
+        servingPlayer = 2
         player1Score = player1Score + 1
         ball:reset()
+        gameState = 'serve'
       end
       ball:update(dt)
     end
